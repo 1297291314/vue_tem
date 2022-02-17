@@ -1,39 +1,35 @@
-<script lang="ts">
-    import { ref, computed, watch, onMounted, defineComponent, PropType } from 'vue'
-
-    interface Student {
-        name: string
-        class: string
-        age: number
-    }
-
-    defineComponent({
-        props: {
-            // success: { type: String },
-            // callback: {
-            //     type: Function as PropType<() => void>,
-            // },
-            student: {
-                type: Object as PropType<Student>,
-                required: true,
-            },
-        },
-        data() {
+<script>
+    import { reactive, toRefs, computed, onMounted, onUnmounted } from 'vue'
+    export default {
+        name: 'component_name',
+        setup() {
+            // reactive 数据双向绑定
+            const state = reactive({
+                id: 1,
+                name: '',
+                num: computed(() => (state.id += 5)), //计算属性
+            })
+            // 方法
+            const methods = {
+                change1() {},
+                change2() {},
+            }
+            //页面加载完成
+            onMounted(() => {})
+            //销毁
+            onUnmounted(() => {})
             return {
-                message: 'Vue3 code style',
+                // toRefs转换为响应式数据
+                ...toRefs(state),
+                ...methods,
             }
         },
-        computed: {
-            reversedMessage(): string {
-                return this.message.split(' ').reverse().join('')
-            },
-        },
-    })
+    }
 </script>
 
 <template>
-    <div>{{ message + student.name }}</div>
+    <div>{{ id }}--{{ name }}--{{ num }}</div>
 </template>
 
-<style type="scss">
+<style lang="scss">
 </style>
