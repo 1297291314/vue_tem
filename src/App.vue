@@ -6,15 +6,17 @@
     import Test2 from './view/test/test2.vue'
     import TestTs from './view/test/testTs.vue'
     import TestTsx from './view/test/testTsx'
+    import Testguid from './view/test/testguid.vue'
 </script>
 
 <template>
     <!-- <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
     <Test />
-    <Test2 />
+    <Test2 :name="'hellow'" />
     <TestTs />
     <TestTsx />
+    <Testguid />
 </template>
 
 <style>
