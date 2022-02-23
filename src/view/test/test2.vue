@@ -1,4 +1,5 @@
 <script>
+    //  vue 基本版有setup写法
     import {reactive,toRefs,computed,onBeforeMount,onMounted,onBeforeUpdate,onUpdated,ref} from 'vue'
     import Test from './test.vue'
     export default{
@@ -8,7 +9,7 @@
         },
         props:{
             name: {
-                require:true,
+                required:false,
                 default:'未知'
             }
         },

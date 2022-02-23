@@ -3,8 +3,10 @@
 // （我们会在一个vue文件中methods，computed，watch，data中等等定义属性和方法，共同处理页面逻辑）
 // 但是大项目容易一个methods中可能有很多其他业务的功能
 // 推荐使用vue3提供的 Composition API（根据逻辑功能来组织的）
+
+// vue3基本写法，无ts，无setup版本
 export default {
-    name:'testguid',
+    name:'x',
     props:{
         prop:{
             required: false,

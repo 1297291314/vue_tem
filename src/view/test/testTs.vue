@@ -1,8 +1,15 @@
 <script lang="ts">
+    //  vue，ts加内部setup版本
     import { defineComponent, reactive, toRefs, computed } from 'vue'
     export default defineComponent({
         name: 'testComponentName',
-        setup() {
+        props:{
+            name:{
+                type: String,
+                required: true
+            }
+        },
+        setup(props) {
             const state: any = reactive({
                 name: 'test',
                 age: 18,
