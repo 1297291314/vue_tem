@@ -1,62 +1,70 @@
 <script>
-    //  vue 基本版有setup写法
-    import {reactive,toRefs,computed,onBeforeMount,onMounted,onBeforeUpdate,onUpdated,ref} from 'vue'
-    import Test from './test.vue'
-    export default{
-        name: 'testMySelf',
-        components:{// 其他组件引用位置
-            Test
-        },
-        props:{
-            name: {
-                required:false,
-                default:'未知'
-            }
-        },
-        data() {
-            return {
-                 message: 'Hello Vue!'
+//  vue 基本版有setup写法
+import { reactive, toRefs, computed, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, ref } from 'vue'
+
+import Test from './test.vue'
+export default {
+    name: 'testMySelf',
+    components: {// 其他组件引用位置
+        Test
+    },
+    props: {
+        name: {
+            required: false,
+            default: '未知'
+        }
+    },
+    data () {
+        return {
+            message: 'Hello Vue3!'
+        }
+    },
+    setup (props, context) {
+        //  props==>传参
+        // context==>上下文
+
+        console.log(1)
+        console.log('props', props.name)
+
+        const state = reactive({
+            // name: "hujunjie",
+            age: 18,
+            sex: "男",
+            specialTag: computed(() => {
+                return state.age >= 18 ? '成年人' : '未成年人'
+            })
+        })
+
+        const qq = ref("qq")
+        onBeforeMount(() => {
+            console.log('I am onBeforeMount')
+        })
+        onMounted(() => {
+            console.log('I am onMounted')
+            console.log(qq)
+        })
+        onBeforeUpdate(() => {
+            console.log('I am onBeforeUpdate')
+        })
+        onUpdated(() => {
+            console.log('I am onUpdated')
+        })
+        const methods = {
+            testClick (par) {
+                console.log(par)
+                if (par > 0) {
+                    state.age += 1
+                } else {
+                    state.age -= 1
                 }
-        },
-        setup(){
-            const state = reactive({
-                // name: "hujunjie",
-                age: 18,
-                sex: "男",
-                specialTag:computed(()=>{
-                    return state.age>=18?'成年人':'未成年人'
-                })
-            })
-            const qq  = ref("qq")
-            onBeforeMount(()=>{
-                console.log('I am onBeforeMount')
-            })
-            onMounted(()=>{
-                console.log('I am onMounted')
-                console.log(qq)
-            })
-            onBeforeUpdate(() => {
-                console.log('I am onBeforeUpdate')
-            })
-            onUpdated(() => {
-                console.log('I am onUpdated')
-            })
-            const methods = {
-                testClick(par){
-                    console.log(par)
-                    if(par>0){
-                        state.age += 1
-                    }else{
-                        state.age -= 1
-                    }
-                }
-            }
-            return{
-                ...toRefs(state),
-                ...methods
             }
         }
+        return {
+            ...toRefs(state),
+            ...methods
+        }
     }
+}
 </script>
 
 
