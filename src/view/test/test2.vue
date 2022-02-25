@@ -8,7 +8,7 @@ export default {
     components: {// 其他组件引用位置
         Test
     },
-    props: {
+    props: { // 同vue2中写法，单独props添加
         name: {
             required: false,
             default: '未知'
@@ -20,11 +20,12 @@ export default {
         }
     },
     setup (props, context) {
-        //  props==>传参
+        //  props==>调用组件传的参数值，父组件传递给子组件的所有数据。
         // context==>上下文
 
         console.log(1)
         console.log('props', props.name)
+        console.log('context',context)
 
         const state = reactive({
             // name: "hujunjie",

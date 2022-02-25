@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite vue-tsc --port 9090",
+    "dev": "vite --port 9090",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
