@@ -3,7 +3,7 @@
     import {reactive,toRefs,ref,toRef,defineProps,computed,onBeforeMount,onMounted,onBeforeUpdate,onUpdated} from 'vue'
     import Test from './test.vue'
 
-    const props = defineProps({
+    const props = defineProps({// 定义属性的写法
         name: {
             type: Array,
             required: true

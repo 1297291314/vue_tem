@@ -8,7 +8,7 @@
 export default {
     name:'x',
     props:{
-        prop:{
+        prop:{// optionApi定义属性写法
             required: false,
             default: 'testguid'
         }

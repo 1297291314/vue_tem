@@ -1,13 +1,14 @@
+// vue3+tsx模版
 import { defineComponent, defineProps, onBeforeMount, computed, reactive, toRefs, ref, toRef } from "vue"
 interface CPageOptions {
-    real_name?: String
+    realName?: String
 }
 export default defineComponent<CPageOptions>({
     name: "testTsx",
 
     setup(props, context) {
         const { slots, attrs, emit } = context
-        let { real_name } = attrs
+        let { realName } = attrs
         console.log('props', props)
         console.log('context', attrs)
         //  context 里有slots,attrs,emits
@@ -36,7 +37,7 @@ export default defineComponent<CPageOptions>({
         // toRefs(state)
         return () => (
             <>
-                <div>{state.name}-{state.age}-{state.specialTag}::{stateNormal + real_name}</div>
+                <div>{state.name}-{state.age}-{state.specialTag}::{stateNormal + realName}</div>
                 <div>
                     花有重开日，人无在少年。莫负韶华<br />
                     <button onClick={methods.changeAge(1)}>点击+1</button>
